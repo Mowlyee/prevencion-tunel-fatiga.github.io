@@ -160,11 +160,12 @@ body {
     text-align: center;
 
     /*Animacion*/
-    transition: transform 0.2s ease-out; /**/
+    transition: transform 0.2s ease-out, background-color 0.2s ease-out; /*Transiciona con una animacion la propiedad transform y background-color en 0.2 segundos con "ease-out" como escala de tiempo*/
 }
 
 .card:hover {
     transform: translateY(5px);
+    background-color: #ddd;
 }
 
 .card a {
@@ -254,5 +255,5 @@ footer {
 .codigo-qr img {
     min-width: 100px;
     width: 60vh;
-    border-radius: 15px;
+    border-radius: 25px;
 }
