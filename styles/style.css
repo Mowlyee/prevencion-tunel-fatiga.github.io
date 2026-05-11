@@ -322,4 +322,12 @@ footer {
     word-break: break-all;
   }
 
+  body {
+    background-attachment: scroll; /* fix para iOS */
+  }
+
+  .codigo-qr img {
+    min-width: unset; /* elimina el min-width que conflictúa */
+  }
+
 }
