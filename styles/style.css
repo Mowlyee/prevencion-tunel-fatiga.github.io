@@ -1,0 +1,258 @@
+/*#####Areas de la pagina########:*/
+
+/*---------------Barra principal--------*/
+    /*Barra principal, le asigno color, color al texto, un "display" para poder manejar el texto dentro de este y un padding para incrementar su altura.
+    Tambien manejo el tamaño de su fuente y el tipo de letra (negrita)*/
+header {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.encabezado img {
+    width: 40px;
+    border-radius: 5px;
+    margin-left: 3vh;
+}
+
+.encabezado {
+    display: flex;
+    background-color: #1f2021;
+    padding: 2vh 0px;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.encabezado-titulo {
+    display:flex;
+    justify-content: center;
+    flex:1;
+}
+
+
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212;
+    height: 3vh;
+    gap: 30px;
+    font-weight: 100;
+    font-size: 16px;
+}
+
+nav a {
+    color: White;
+    text-decoration: none;
+}
+nav a:hover{
+    text-decoration: underline;
+}
+
+
+/*-------Mayor parte del body y el contenido ---------------*/
+body {
+    margin: 0; /*Saca el margin para que el nav "entre completo" en el body*/
+    /*La imagen de fondo se pone individualmente en cada .html de la pagina
+    con style*/
+    background-size:cover ; /*El fondo va a tomar toda la pantalla*/
+    background-color: rgba(0, 0, 0, 0.5); /*"El color de la opacidad"*/
+    background-blend-mode: darken; /**/
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+}
+
+.contenido{
+    display: flex;
+    flex-direction: column;
+    margin: 15vh;
+    margin-top: 5vh;
+    justify-content: center;
+    gap: 5vh;
+
+    flex: 1; /*Ocupa todo el espacio*/
+}
+
+.articulo {
+    border-radius: 15px; /*Redondea los bordes a 15px*/
+    padding:5vh; /*El padding (espacio) con respecto al borde es 5vh (1% de la altura de la pagina)*/
+    background-color: white; /*El fondo del articulo es blanco*/
+    height: auto;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /*El articulo genera una sombra*/
+    
+}
+
+
+
+
+    /*............Propiedades de secciones para el articulo.................*/
+.seccion {
+    margin-bottom: 60px; /*Aplica un margen de 60 pixeles al final de la seccion*/
+}
+
+.seccion:last-child {
+    margin-bottom: 0;
+}
+
+
+.img-paragrafo {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+.img-paragrafo img{
+    width: 360px; /*Las imagenees dentro del imagen-paragrafo seran de este ancho*/
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5); /*Sombra*/
+    border-radius: 10px; /*Redondeo de esquinas*/
+    border: 1px solid rgb(50, 19, 3); /*Borde marron*/
+}
+
+.img-grande {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    border: 1px solid rgb(50, 19, 3); /*Borde marron*/
+    object-fit: cover; /*Cubre todo el tamaño del img aunque tenga que cortar la imagen original*/
+
+}
+
+.img-paragrafo.invertida {
+    flex-direction: row-reverse;
+}
+
+            /*Separa el texto, siendo como una linea que cubre el ancho del contenido del articulo*/
+.separador { 
+    border: none; /*Le quito los bordes por default que tiene y dejo uno*/
+    border-top: 2px solid #eee;
+    margin: 48px 0;
+}
+
+    /*.......... Grid y "cards" ............*/
+
+.contenedor-grid {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    justify-content: center;
+}
+
+.contenedor-grid a {
+    text-decoration: none;
+    color: inherit;
+    display: contents; /*Hace que se comporte como si el A no existiera pq afecta la visualizacion del grid*/
+}
+
+
+.card {
+    padding: 1em;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    border: 1px solid gray;
+    text-align: center;
+
+    /*Animacion*/
+    transition: transform 0.2s ease-out; /**/
+}
+
+.card:hover {
+    transform: translateY(5px);
+}
+
+.card a {
+    color: black;
+    text-decoration: none;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+
+
+/*----------------------------Footer / pie de pagina----------------*/
+
+footer {
+    display: flex;
+    height: 10vh;    
+    background-color: #1f2021;  
+    color: white;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.5);
+}
+
+
+/*----------------------Miscelaneo / Elementos varios:-----------------*/
+.texto {
+    flex: 1;
+}
+
+.texto p {
+    font-size: 22px;
+    line-height: 1.8; /*La altura entre lineas de textos es de 1.8*/
+}
+
+.titulo { 
+    border-left: 5px solid orangered; /*Le asigno 5px al grosor, un estilo solido y color naranja al borde*/
+    padding-left: 10px; /*Le doy 10 pixeles de espacio al lado izquierdo entre el borde y el contenido*/
+}
+
+
+.titulo-grande {
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.8);
+}
+
+.titulo-grande2 {
+    display: flex;
+    justify-content: center;
+    text-decoration: underline;
+    text-decoration-color: orangered;
+}
+
+.titulo-grande2 h1 {
+    font-size: 30px;
+    color: #000;
+}
+
+.lista {
+    list-style: disc; /*Le doy un item tipo disco/ circulo*/
+    font-size: 19px;
+
+}
+
+.lista li {
+    padding: 8px 0 8px 15px;
+
+}
+
+.lista a {
+    color: rgb(206, 65, 13);
+    text-decoration: none;
+}
+
+.lista a:hover {
+    text-decoration: underline;
+}
+
+.codigo-qr {
+    display: flex;
+    justify-content: center;
+}
+
+.codigo-qr img {
+    min-width: 100px;
+    width: 60vh;
+    border-radius: 15px;
+}
