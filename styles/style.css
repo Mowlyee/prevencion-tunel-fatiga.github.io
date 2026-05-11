@@ -250,13 +250,26 @@ footer {
 
 .codigo-qr {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
 .codigo-qr img {
     min-width: 100px;
     width: 60vh;
     border-radius: 25px;
+}
+
+.codigo-qr a {
+    margin-top: 15px;
+    color: rgb(206, 65, 13);
+    text-decoration: none;
+    text-align: center;
+}
+
+.codigo-qr a:hover {
+    text-decoration: underline;
 }
 
 /* ===== RESPONSIVE - CELULARES ===== */
