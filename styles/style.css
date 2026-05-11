@@ -261,26 +261,32 @@ footer {
 /* ===== RESPONSIVE - CELULARES ===== */
 @media (max-width: 768px) {
 
+  body {
+    background-attachment: scroll;
+  }
+
   .contenido {
-    margin: 2vh 4vw;
-    margin-top: 3vh;
+    margin: 3vh 3vw !important;
+    margin-top: 3vh !important;
+    gap: 3vh;
   }
 
   .articulo {
-    padding: 3vh 4vw;
+    padding: 4vw !important;
+    box-sizing: border-box;
   }
 
   .encabezado-titulo {
-    font-size: 14px;
+    font-size: 13px;
     text-align: center;
     padding: 0 8px;
   }
 
   nav {
-    gap: 15px;
+    gap: 12px;
     font-size: 13px;
     height: auto;
-    padding: 8px 0;
+    padding: 8px 4px;
     flex-wrap: wrap;
   }
 
@@ -289,31 +295,35 @@ footer {
   }
 
   .titulo-grande2 h1 {
-    font-size: 22px;
+    font-size: 20px;
     text-align: center;
   }
 
-  .img-paragrafo {
-    flex-direction: column;
-  }
-
+  .img-paragrafo,
   .img-paragrafo.invertida {
     flex-direction: column;
   }
 
   .img-paragrafo img {
     width: 100%;
+    box-sizing: border-box;
   }
 
   .texto p {
-    font-size: 17px;
+    font-size: 16px;
+  }
+
+  .lista {
+    font-size: 16px;
+    padding-left: 18px;
   }
 
   .contenedor-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .codigo-qr img {
+    min-width: unset;
     width: 80vw;
     max-width: 300px;
   }
@@ -322,12 +332,8 @@ footer {
     word-break: break-all;
   }
 
-  body {
-    background-attachment: scroll; /* fix para iOS */
-  }
-
-  .codigo-qr img {
-    min-width: unset; /* elimina el min-width que conflictúa */
+  .img-grande {
+    height: 180px;
   }
 
 }
