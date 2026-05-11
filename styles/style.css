@@ -257,3 +257,69 @@ footer {
     width: 60vh;
     border-radius: 25px;
 }
+
+/* ===== RESPONSIVE - CELULARES ===== */
+@media (max-width: 768px) {
+
+  .contenido {
+    margin: 2vh 4vw;
+    margin-top: 3vh;
+  }
+
+  .articulo {
+    padding: 3vh 4vw;
+  }
+
+  .encabezado-titulo {
+    font-size: 14px;
+    text-align: center;
+    padding: 0 8px;
+  }
+
+  nav {
+    gap: 15px;
+    font-size: 13px;
+    height: auto;
+    padding: 8px 0;
+    flex-wrap: wrap;
+  }
+
+  .titulo-grande {
+    font-size: 22px;
+  }
+
+  .titulo-grande2 h1 {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .img-paragrafo {
+    flex-direction: column;
+  }
+
+  .img-paragrafo.invertida {
+    flex-direction: column;
+  }
+
+  .img-paragrafo img {
+    width: 100%;
+  }
+
+  .texto p {
+    font-size: 17px;
+  }
+
+  .contenedor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .codigo-qr img {
+    width: 80vw;
+    max-width: 300px;
+  }
+
+  .lista a {
+    word-break: break-all;
+  }
+
+}
