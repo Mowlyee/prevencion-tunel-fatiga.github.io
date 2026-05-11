@@ -186,6 +186,7 @@ footer {
     height: 10vh;    
     background-color: #1f2021;  
     color: white;
+    text-align: center;
     justify-content: center;
     align-items: center;
     box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.5);
