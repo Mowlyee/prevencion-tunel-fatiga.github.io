@@ -1,0 +1,249 @@
+/* ===================================================
+   juego.css — Estilos del juego Luz Roja Luz Verde
+   Complementa style.css, no lo reemplaza.
+=================================================== */
+
+/* -------- Semáforo visual -------- */
+.semaforo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.semaforo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #1a1a1a;
+    border-radius: 18px;
+    padding: 14px 20px;
+    box-shadow: 0px 6px 24px rgba(0,0,0,0.5), inset 0 0 10px rgba(0,0,0,0.4);
+    border: 3px solid #333;
+    width: fit-content;
+}
+
+.luz {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background-color: #2a2a2a;
+    border: 2px solid #444;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Luces encendidas */
+.luz.activa.roja {
+    background-color: #ff2020;
+    box-shadow: 0 0 18px 6px rgba(255, 30, 30, 0.75);
+}
+
+.luz.activa.amarilla {
+    background-color: #ffd000;
+    box-shadow: 0 0 18px 6px rgba(255, 208, 0, 0.75);
+}
+
+.luz.activa.verde {
+    background-color: #22dd55;
+    box-shadow: 0 0 18px 6px rgba(34, 221, 85, 0.75);
+}
+
+/* -------- Label de estado -------- */
+.estado-label {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 20px;
+    border-radius: 30px;
+    background-color: #eee;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+}
+
+.estado-verde {
+    background-color: #d4f8de;
+    color: #0a6629;
+    border: 2px solid #22dd55;
+}
+
+.estado-amarillo {
+    background-color: #fff8d4;
+    color: #7a5c00;
+    border: 2px solid #ffd000;
+}
+
+.estado-rojo {
+    background-color: #ffd4d4;
+    color: #7a0000;
+    border: 2px solid #ff2020;
+    animation: pulso-rojo 0.5s ease infinite alternate;
+}
+
+@keyframes pulso-rojo {
+    from { transform: scale(1); }
+    to   { transform: scale(1.03); }
+}
+
+/* -------- HUD (timer / palabras / penalti / total) -------- */
+.hud {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .hud {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.hud-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    padding: 10px 6px;
+    border: 1px solid #ddd;
+}
+
+.hud-titulo {
+    font-size: 13px;
+    color: #666;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hud-valor {
+    font-size: 32px;
+    font-weight: bold;
+    color: #1a1a1a;
+    line-height: 1.2;
+}
+
+/* -------- Área de escritura -------- */
+.area-escritura {
+    width: 100%;
+    min-height: 180px;
+    border-radius: 12px;
+    border: 2px solid #ccc;
+    padding: 14px 16px;
+    font-size: 18px;
+    font-family: 'Courier New', monospace;
+    line-height: 1.7;
+    resize: vertical;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    color: #111;
+    background-color: #fafafa;
+}
+
+.area-escritura:focus {
+    border-color: orangered;
+    box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.15);
+}
+
+.area-escritura:read-only {
+    background-color: #ececec;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* Estado rojo: borde rojo pulsante, fondo rosado */
+.area-escritura.rojo-bloqueado {
+    border-color: #ff2020 !important;
+    background-color: #fff0f0 !important;
+    box-shadow: 0 0 0 3px rgba(255, 30, 30, 0.2) !important;
+    animation: borde-rojo-pulso 0.6s ease infinite alternate;
+}
+
+@keyframes borde-rojo-pulso {
+    from { box-shadow: 0 0 0 3px rgba(255, 30, 30, 0.15); }
+    to   { box-shadow: 0 0 0 6px rgba(255, 30, 30, 0.35); }
+}
+
+/* Shake al escribir en rojo */
+.area-escritura.shake {
+    animation: shake 0.35s ease;
+}
+
+@keyframes shake {
+    0%   { transform: translateX(0); }
+    20%  { transform: translateX(-6px); }
+    40%  { transform: translateX(6px); }
+    60%  { transform: translateX(-4px); }
+    80%  { transform: translateX(4px); }
+    100% { transform: translateX(0); }
+}
+
+.area-escritura::placeholder {
+    color: #d0d0d0;
+    font-style: italic;
+}
+
+.botones-juego {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-juego {
+    padding: 12px 36px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+}
+
+.btn-juego:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.btn-juego:active {
+    transform: translateY(1px);
+    filter: brightness(0.92);
+}
+
+.btn-iniciar {
+    background-color: orangered;
+    color: white;
+}
+
+.btn-reiniciar {
+    background-color: #333;
+    color: white;
+}
+
+/* -------- Resultado final -------- */
+.resultado-final {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 2px solid #eee;
+    animation: desdeAbajo 0.5s ease-out both;
+}
+
+.resultado-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.resultado-mensaje {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: orangered;
+    margin: 8px 0 20px;
+}

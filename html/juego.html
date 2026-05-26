@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../media/logo.jpeg">
+    <title>Juego: Luz Roja Luz Verde</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/juego.css">
+</head>
+<body style="background-image: url(../media/oficina.jpg)">
+
+    <header>
+        <div class="encabezado">
+            <a href="../index.html">
+                <img src="../media/logo.jpeg" alt="logo">
+            </a>
+            <div class="encabezado-titulo">Sindrome del Túnel Carpiano y Fatiga visual | Muestra de seguridad e higiene</div>
+        </div>
+        <nav>
+            <a href="../index.html">Inicio</a>
+            <a href="tunel-carpiano.html">Sindrome del tunel carpiano</a>
+            <a href="fatiga-visual.html">Fatiga visual</a>
+            <a href="juego.html">Juego interactivo</a>
+        </nav>
+    </header>
+
+    <div class="contenido">
+
+        <h1 class="titulo-grande">🚦 Luz Roja, Luz Verde — ¡Escribí rápido!</h1>
+
+        <div class="articulo animar-abajo">
+            <div class="seccion">
+                <div class="titulo-grande2">
+                    <h1>¿Cómo se juega?</h1>
+                </div>
+                <div class="texto">
+                    <p>Escribí todo lo que puedas en <strong>20 segundos</strong>. Pero prestá atención al semáforo:</p>
+                </div>
+                <div class="contenedor-grid" style="margin-top: 16px;">
+                    <div class="card">
+                        <h1>🟢</h1>
+                        <h2>Luz Verde</h2>
+                        <p>¡Escribí sin parar! Todo lo que escribas cuenta.</p>
+                    </div>
+                    <div class="card">
+                        <h1>🟡</h1>
+                        <h2>Luz Amarilla</h2>
+                        <p>Cuidado, viene el rojo. Terminá la palabra si podés.</p>
+                    </div>
+                    <div class="card">
+                        <h1>🔴</h1>
+                        <h2>Luz Roja</h2>
+                        <p>¡Pará! Si escribís en rojo, <strong>perdés puntos</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="articulo animar-abajo" id="juego-principal">
+            <div class="seccion">
+
+                <!-- SEMÁFORO -->
+                <div class="semaforo-wrapper">
+                    <div class="semaforo" id="semaforo">
+                        <div class="luz" id="luz-roja"></div>
+                        <div class="luz" id="luz-amarilla"></div>
+                        <div class="luz" id="luz-verde"></div>
+                    </div>
+                    <div class="estado-label" id="estado-label">Presioná "Iniciar" para jugar</div>
+                </div>
+
+                <!-- TIMER Y PUNTAJE -->
+                <div class="hud">
+                    <div class="hud-item">
+                        <span class="hud-titulo">⏱ Tiempo</span>
+                        <span class="hud-valor" id="timer">20</span>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-titulo">✅ Palabras</span>
+                        <span class="hud-valor" id="palabras">0</span>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-titulo">❌ Penalti</span>
+                        <span class="hud-valor" id="penalti">0</span>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-titulo">🏆 Total</span>
+                        <span class="hud-valor" id="total">0</span>
+                    </div>
+                </div>
+
+                <!-- ÁREA DE ESCRITURA -->
+                <textarea
+                    id="area-escritura"
+                    class="area-escritura"
+                    placeholder="Aca escribi el texto que quieras."
+                    readonly
+                    spellcheck="false"
+                ></textarea>
+
+                <!-- BOTONES -->
+                <div class="botones-juego">
+                    <button class="btn-juego btn-iniciar" id="btn-iniciar" onclick="iniciarJuego()">▶ Iniciar</button>
+                    <button class="btn-juego btn-reiniciar" id="btn-reiniciar" onclick="reiniciarJuego()" style="display:none">🔄 Reiniciar</button>
+                </div>
+
+            </div>
+
+            <!-- RESULTADO FINAL -->
+            <div class="resultado-final" id="resultado-final" style="display:none">
+                <div class="titulo-grande2"><h1>¡Tiempo!</h1></div>
+                <div class="resultado-grid">
+                    <div class="card">
+                        <h1>✅</h1>
+                        <h2 id="res-palabras">0</h2>
+                        <p>Palabras escritas</p>
+                    </div>
+                    <div class="card">
+                        <h1>❌</h1>
+                        <h2 id="res-penalti">0</h2>
+                        <p>Palabras en rojo (−2 c/u)</p>
+                    </div>
+                    <div class="card">
+                        <h1>🏆</h1>
+                        <h2 id="res-total">0</h2>
+                        <p>Puntaje final</p>
+                    </div>
+                </div>
+                <p class="resultado-mensaje" id="resultado-mensaje"></p>
+                <div class="botones-juego">
+                    <button class="btn-juego btn-iniciar" onclick="reiniciarJuego()">🔄 Jugar de nuevo</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CONSEJO DE SALUD -->
+        <div class="articulo animar-derecha-izquierda">
+            <div class="seccion">
+                <h2 class="titulo">💡 Dato de salud</h2>
+                <div class="texto">
+                    <p>Recordá tomar pausas, estirar las muñecas y descansar la vista cada 20 minutos.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="animar-footer">
+        Alumnos: Nicolas Buonanni, Braian Diaz, Sebastian Yapuchura.
+    </footer>
+
+    <script>
+        // ====== ESTADO DEL JUEGO ======
+        let estadoSemaforo = 'verde'; // 'verde' | 'amarillo' | 'rojo'
+        let juegoActivo = false;
+        let tiempoRestante = 20;
+        let palabrasValidas = 0;
+        let palabrasEnRojo = 0;
+        let textoAnterior = '';
+        let intervalTimer = null;
+        let intervalSemaforo = null;
+        let tiempoProximoCambio = 0;
+
+        // ====== DURACIONES (ms) ======
+        const DURACION_VERDE  = () => aleatorio(4000, 7000);
+        const DURACION_AMARILLO = () => aleatorio(1500, 2500);
+        const DURACION_ROJO   = () => aleatorio(2000, 4000);
+
+        function aleatorio(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // ====== SEMÁFORO ======
+        function setSemaforo(estado) {
+            estadoSemaforo = estado;
+            document.getElementById('luz-roja').className    = 'luz' + (estado === 'rojo'     ? ' activa roja'     : '');
+            document.getElementById('luz-amarilla').className= 'luz' + (estado === 'amarillo'  ? ' activa amarilla'  : '');
+            document.getElementById('luz-verde').className   = 'luz' + (estado === 'verde'     ? ' activa verde'     : '');
+
+            const label = document.getElementById('estado-label');
+            const area  = document.getElementById('area-escritura');
+
+            if (estado === 'verde') {
+                label.textContent = '🟢 ¡Escribí!';
+                label.className = 'estado-label estado-verde';
+                area.readOnly = false;
+                area.classList.remove('rojo-bloqueado');
+                area.focus();
+            } else if (estado === 'amarillo') {
+                label.textContent = '🟡 ¡Cuidado! Viene el rojo...';
+                label.className = 'estado-label estado-amarillo';
+                area.readOnly = false;
+                area.classList.remove('rojo-bloqueado');
+            } else {
+                label.textContent = '🔴 ¡PARÁ! No escribas.';
+                label.className = 'estado-label estado-rojo';
+                area.classList.add('rojo-bloqueado');
+                // no bloqueamos el textarea para poder detectar teclas,
+                // pero penalizamos cualquier letra nueva
+            }
+        }
+
+        function cicloSemaforo() {
+            // Verde → Amarillo → Rojo → Verde...
+            if (estadoSemaforo === 'verde') {
+                setSemaforo('amarillo');
+                tiempoProximoCambio = DURACION_AMARILLO();
+            } else if (estadoSemaforo === 'amarillo') {
+                setSemaforo('rojo');
+                tiempoProximoCambio = DURACION_ROJO();
+            } else {
+                setSemaforo('verde');
+                tiempoProximoCambio = DURACION_VERDE();
+            }
+            intervalSemaforo = setTimeout(cicloSemaforo, tiempoProximoCambio);
+        }
+
+        // ====== CONTEO DE PALABRAS ======
+        function contarPalabras(texto) {
+            return texto.trim().split(/\s+/).filter(w => w.length > 0).length;
+        }
+
+        // ====== DETECCIÓN DE TIPEO EN ROJO ======
+        document.addEventListener('DOMContentLoaded', () => {
+            const area = document.getElementById('area-escritura');
+
+            area.addEventListener('input', (e) => {
+                if (!juegoActivo) return;
+
+                const textoActual = area.value;
+
+                if (estadoSemaforo === 'rojo') {
+                    // Contamos cuántas palabras nuevas se añadieron
+                    const palabrasAhora   = contarPalabras(textoActual);
+                    const palabrasAntes   = contarPalabras(textoAnterior);
+                    const nuevasPalabras  = palabrasAhora - palabrasAntes;
+                    if (nuevasPalabras > 0) {
+                        palabrasEnRojo += nuevasPalabras;
+                        document.getElementById('penalti').textContent = palabrasEnRojo;
+                        actualizarTotal();
+                        // Pequeño shake visual
+                        area.classList.add('shake');
+                        setTimeout(() => area.classList.remove('shake'), 400);
+                    }
+                }
+
+                textoAnterior = textoActual;
+
+                // Actualizar contador de palabras válidas
+                const totalPalabras = contarPalabras(textoActual);
+                palabrasValidas = Math.max(0, totalPalabras - palabrasEnRojo);
+                document.getElementById('palabras').textContent = palabrasValidas;
+                actualizarTotal();
+            });
+        });
+
+        function actualizarTotal() {
+            const total = Math.max(0, palabrasValidas - (palabrasEnRojo * 2));
+            document.getElementById('total').textContent = total;
+        }
+
+        // ====== INICIO / FIN / RESET ======
+        function iniciarJuego() {
+            juegoActivo     = true;
+            tiempoRestante  = 20;
+            palabrasValidas = 0;
+            palabrasEnRojo  = 0;
+            textoAnterior   = '';
+
+            document.getElementById('area-escritura').value = '';
+            document.getElementById('palabras').textContent = '0';
+            document.getElementById('penalti').textContent  = '0';
+            document.getElementById('total').textContent    = '0';
+            document.getElementById('timer').textContent    = '20';
+            document.getElementById('resultado-final').style.display = 'none';
+            document.getElementById('btn-iniciar').style.display  = 'none';
+            document.getElementById('btn-reiniciar').style.display = 'inline-block';
+
+            // Arranca en verde
+            setSemaforo('verde');
+            tiempoProximoCambio = DURACION_VERDE();
+            intervalSemaforo = setTimeout(cicloSemaforo, tiempoProximoCambio);
+
+            // Timer de 1 minuto
+            intervalTimer = setInterval(() => {
+                tiempoRestante--;
+                document.getElementById('timer').textContent = tiempoRestante;
+                if (tiempoRestante <= 0) terminarJuego();
+            }, 1000);
+        }
+
+        function terminarJuego() {
+            juegoActivo = false;
+            clearInterval(intervalTimer);
+            clearTimeout(intervalSemaforo);
+
+            const area = document.getElementById('area-escritura');
+            area.readOnly = true;
+            document.getElementById('luz-roja').className    = 'luz';
+            document.getElementById('luz-amarilla').className= 'luz';
+            document.getElementById('luz-verde').className   = 'luz';
+            document.getElementById('estado-label').textContent = '⏹ Juego terminado';
+            document.getElementById('estado-label').className = 'estado-label';
+
+            // Calcular resultado final
+            const totalPalabras = contarPalabras(area.value);
+            const validas = Math.max(0, totalPalabras - palabrasEnRojo);
+            const puntajeFinal = Math.max(0, validas - (palabrasEnRojo * 2));
+
+            document.getElementById('res-palabras').textContent = validas;
+            document.getElementById('res-penalti').textContent  = palabrasEnRojo;
+            document.getElementById('res-total').textContent    = puntajeFinal;
+
+            // Mensaje motivacional
+            let msg = '';
+            if (puntajeFinal >= 80)      msg = '🏆 ¡Sos un monstruo del teclado!';
+            else if (puntajeFinal >= 50) msg = '🔥 ¡Excelente velocidad!';
+            else if (puntajeFinal >= 30) msg = '👍 ¡Buen ritmo! Seguí practicando.';
+            else if (puntajeFinal >= 15) msg = '💪 ¡Vas bien! No te rindas.';
+            else                          msg = '🐢 Todavía hay mucho por mejorar...';
+            document.getElementById('resultado-mensaje').textContent = msg;
+
+            document.getElementById('resultado-final').style.display = 'block';
+            document.getElementById('btn-reiniciar').style.display   = 'none';
+            document.getElementById('btn-iniciar').style.display     = 'none';
+
+            // Scroll suave al resultado
+            document.getElementById('resultado-final').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function reiniciarJuego() {
+            juegoActivo = false;
+            clearInterval(intervalTimer);
+            clearTimeout(intervalSemaforo);
+
+            const area = document.getElementById('area-escritura');
+            area.readOnly = true;
+            area.classList.remove('rojo-bloqueado', 'shake');
+
+            document.getElementById('luz-roja').className    = 'luz';
+            document.getElementById('luz-amarilla').className= 'luz';
+            document.getElementById('luz-verde').className   = 'luz';
+            document.getElementById('estado-label').textContent = 'Presioná "Iniciar" para jugar';
+            document.getElementById('estado-label').className = 'estado-label';
+
+            document.getElementById('timer').textContent   = '20';
+            document.getElementById('palabras').textContent= '0';
+            document.getElementById('penalti').textContent = '0';
+            document.getElementById('total').textContent   = '0';
+
+            document.getElementById('resultado-final').style.display = 'none';
+            document.getElementById('btn-iniciar').style.display     = 'inline-block';
+            document.getElementById('btn-reiniciar').style.display   = 'none';
+        }
+    </script>
+
+</body>
+</html>

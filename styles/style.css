@@ -272,6 +272,70 @@ footer {
     text-decoration: underline;
 }
 
+
+
+
+
+
+/*============ANIMACIONES===============*/
+/* ---------- ANIMACION HEADER ------------- */
+@keyframes bajarHeader {
+  from {
+    transform: translateY(-100%);   
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+header {
+  animation: bajarHeader 0.2s ease-out;
+}
+
+/* ------- Animaciones de articulos y el footer------- */
+
+.animar-derecha-izquierda {
+  animation: desdeDerecha 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+.animar-izquierda-derecha {
+  animation: desdeIzquierda 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+.animar-abajo {
+  animation: desdeAbajo 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+.animar-footer {
+  animation: desdeAbajo 0.8s ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+@keyframes desdeIzquierda {
+  from { transform: translateX(-80px); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+@keyframes desdeDerecha {
+  from { transform: translateX(80px);  opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+@keyframes desdeAbajo {
+  from { transform: translateY(60px);  opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+
 /* ===== RESPONSIVE - CELULARES ===== */
 @media (max-width: 768px) {
 
